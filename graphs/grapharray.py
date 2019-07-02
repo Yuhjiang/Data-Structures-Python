@@ -32,8 +32,9 @@ class GraphArray(object):
         self.ne = ne
 
         # 设置初始图
-        for _ in range(self.nv):
+        for i in range(self.nv):
             self.graph.append([INFINITY] * self.nv)
+            self.graph[i][i] = 0
             self.visited.append(False)
 
         # 生成图
@@ -164,6 +165,25 @@ class GraphArray(object):
                         dist[w] = dist[v] + self.graph[v][w]
                         path[w] = v
 
+    def floyd(self, dist, path):
+        """
+        多源最短路径算法
+        :param dist: dist[i][j] i到j的最小长度
+        :param path: 路径
+        :return:
+        """
+        for i in range(self.nv):
+            for j in range(self.nv):
+                dist[i][j] = self.graph[i][j]
+                path[i][j] = -1
+
+        for k in range(self.nv):
+            for i in range(self.nv):
+                for j in range(self.nv):
+                    if dist[i][j] > dist[i][k] + dist[k][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
+                        path[i][j] = k
+
 
 if __name__ == '__main__':
     edges = [
@@ -176,6 +196,7 @@ if __name__ == '__main__':
 
     g = GraphArray()
     g.create_graph(5, 5, edges)
+    print(g.graph)
 
     g.deep_first_search(1)
     g.init_visit()
