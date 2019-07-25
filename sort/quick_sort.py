@@ -1,3 +1,7 @@
+from . import log
+
+
+@log
 def quick_sort(lyst):
     quick_sort_helper(lyst, 0, len(lyst) - 1)
 

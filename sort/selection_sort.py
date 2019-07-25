@@ -1,3 +1,7 @@
+from . import log
+
+
+@log
 def selection_sort(lyst):
     """
     1.外围循环从0开始，设为i

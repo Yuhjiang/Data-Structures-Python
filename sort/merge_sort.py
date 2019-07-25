@@ -1,3 +1,7 @@
+from . import log
+
+
+@log
 def merge_sort(lyst):
     copy_buffer = [0] * len(lyst)
     merge_sort_helper(lyst, copy_buffer, 0, len(lyst) - 1)
@@ -16,7 +20,6 @@ def merge(lyst, copy_buffer, left, middle, right):
     i2 = middle + 1
 
     for i in range(left, right + 1):
-        print(i1, i2, right)
         if i1 > middle:
             copy_buffer[i] = lyst[i2]
             i2 += 1

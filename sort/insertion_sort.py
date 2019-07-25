@@ -1,3 +1,7 @@
+from . import log
+
+
+@log
 def insertion_sort(lyst):
     """
     假设前i项已经排好序，把第i+1项插入前面排好序的数组里

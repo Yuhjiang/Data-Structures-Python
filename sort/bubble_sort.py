@@ -1,3 +1,7 @@
+from . import log
+
+
+@log
 def bubble_sort(lyst):
     """
     外围循环从n开始
